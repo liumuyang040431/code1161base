@@ -213,7 +213,7 @@ def loops_6():
     for i in range(10):
         row = []
         for j in range(i + 1):
-            row.append(j)
+            row.append(str(j))
         the_wedge.append(row)
 
     return the_wedge
@@ -239,16 +239,8 @@ def loops_7():
     (this is what will print when you test from inside this file)
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
+    """
 
-
-    for i in range(1, 9, -1):
-        for j in range(9 - i):
-            print(" ", end=" ")
-        for j in range(1, i):
-            print("*", end=" ")
-        for i in range(i, 0, -1):
-            print("*", end=" ")
-        print()
 
 
 def lp(some_kind_of_list, exercise_name):
