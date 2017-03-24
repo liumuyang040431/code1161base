@@ -240,7 +240,19 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
+    pyramid_of_stars = []
 
+    for i in range(5):
+        rows = []
+        for j in range(9):
+            if abs(j-4) <= i:
+                rows.append('*')
+            else:
+                rows.append(' ')
+        pyramid_of_stars.append(rows)
+
+    print(pyramid_of_stars)
+    return(pyramid_of_stars)
 
 
 def lp(some_kind_of_list, exercise_name):
@@ -261,6 +273,7 @@ def lp(some_kind_of_list, exercise_name):
             for column in some_kind_of_list:
                 print(column, end="")
             print()
+
     else:
         print(exercise_name, "maybe you haven't got to this one yet?")
 
