@@ -44,7 +44,7 @@ def really_shout(a_string):
     from above.
     Look up how to 'concatinate' strings to make this happen.
     """
-    pass
+    return shout(a_string) + "!"
 
 
 def minitest(f, args, expected):
