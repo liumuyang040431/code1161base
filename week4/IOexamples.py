@@ -22,19 +22,20 @@ def be_cool(name):
     print(name + " is cool")
 
 
-be_cool("Ben")
+be_cool("Gary")
 
 
 def be_cool_for_ever(name, file_path):
-    """Save a message about being cool for ever."""
+    """Save a message Garyabout being cool for ever."""
     mode = "w"  # from the docs
     history_book = open(file_path, mode)
     history_book.write(name + " is cool")
     history_book.close()
 
 
-be_cool_for_ever("Ben", "ben_is_cool.txt")
-be_cool_for_ever("Ben", "week4/ben_is_cool.lol_UR_joking")
+be_cool_for_ever("Gary", "gary_is_cool.txt")
+be_cool_for_ever("Gary", "week1/gary_is_cool.lol_UR_joking")
+be_cool_for_ever("Gary", "../gary_is_cool.periscope")
 
 
 def who_is_cool(file_path):
@@ -47,7 +48,7 @@ def who_is_cool(file_path):
     history_book.close()
 
 
-who_is_cool("ben_is_cool.txt")
+who_is_cool("gary_is_cool.txt")
 
 
 # some JSON examples:
@@ -72,7 +73,7 @@ def bury_time_capsule(something_for_your_kids_to_find, file_path):
         return False
 
 
-message_for_capsule = {"name": "Ben",
+message_for_capsule = {"name": "Gary",
                        "Year": 2017,
                        "Location": "Sydney",
                        "Greeting": "Yo whatup now and give a brother room",
