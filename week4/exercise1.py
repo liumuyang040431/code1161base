@@ -28,7 +28,11 @@ def success_is_relative():
     # this depends on excecution context. Take a look at your CWD and remember
     # that it changes.
     # print(path, CWD)
-    pass
+    mode = "r"
+    file_path = "week1/pySuccessMessage.json"
+    success = open(file_path, mode)
+    return success.read().strip()
+    success.close
 
 
 def get_some_details():
@@ -50,9 +54,9 @@ def get_some_details():
     json_data = open(LOCAL + "/lazyduck.json").read()
 
     data = json.loads(json_data)
-    return {"lastName":       None,
-            "password":       None,
-            "postcodePlusID": None
+    return {"lastName": data["results"][0]["name"]["last"],
+            "password": data["results"][0]["login"]["password"],
+            "postcodePlusID": data["results"][0]["location"]["postcode"]
             }
 
 
@@ -88,7 +92,17 @@ def wordy_pyramid():
     ]
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. ?len=
     """
-    pass
+    wp = []
+    url = "http://randomword.setgetgo.com/get.php?len="
+    for i in range(3, 20, 2):
+        f_url = url + str(i)
+        req = requests.get(f_url)
+        wp.append(req.text)
+    for j in range(3, 20, 2):
+        f_url = url + str(j)
+        req = requests.get(f_url)
+        wp.append(req.text)
+    return wp
 
 
 def wunderground():
@@ -103,7 +117,7 @@ def wunderground():
          variable and then future access will be easier.
     """
     base = "http://api.wunderground.com/api/"
-    api_key = "YOUR KEY - REGISTER TO GET ONE"
+    api_key = "c4b8141fa5c6b73b"
     country = "AU"
     city = "Sydney"
     template = "{base}/{key}/conditions/q/{country}/{city}.json"
