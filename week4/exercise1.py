@@ -94,11 +94,11 @@ def wordy_pyramid():
     """
     wp = []
     url = "http://randomword.setgetgo.com/get.php?len="
-    for i in range(3, 20, 2):
+    for i in range(3, 20, 1):
         f_url = url + str(i)
         req = requests.get(f_url)
         wp.append(req.text)
-    for j in range(3, 20, 2):
+    for j in range(3, 20, -2):
         f_url = url + str(j)
         req = requests.get(f_url)
         wp.append(req.text)
