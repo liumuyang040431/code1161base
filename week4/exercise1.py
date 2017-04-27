@@ -74,7 +74,7 @@ def wordy_pyramid():
     Return the pyramid as a list of strings.
     I.e. ["cep", "dwine", "tenoner", ...]
     [
-    "cep",
+    "cep", 3
     "dwine",
     "tenoner",
     "ectomeric",
@@ -82,20 +82,32 @@ def wordy_pyramid():
     "phlebenterism",
     "autonephrotoxin",
     "redifferentiation",
-    "phytosociologically",
-    "theologicohistorical",
-    "supersesquitertial",
+    "phytosociologically", 19
+    "theologicohistorical", 20
+    "supersesquitertial", 18
     "phosphomolybdate",
     "spermatophoral",
     "storiologist",
     "concretion",
     "geoblast",
     "Nereis",
-    "Leto",
+    "Leto", 4
     ]
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. ?len=
     """
-    pass
+    URL = "http://www.setgetgo.com/randomword/get.php?len="
+    my_pyramid = []
+    for i in range(3, 21, 2):
+        url = URL + str(i)
+        response = requests.get(url)
+        message = response.text
+        my_pyramid.append(message)
+    for i in range(20, 3, -2):
+        url = URL + str(i)
+        response = requests.get(url)
+        message = response.text
+        my_pyramid.append(message)
+    return my_pyramid
 
 
 def wunderground():
@@ -110,7 +122,7 @@ def wunderground():
          variable and then future access will be easier.
     """
     base = "http://api.wunderground.com/api/"
-    api_key = "YOUR KEY - REGISTER TO GET ONE"
+    api_key = "70890f1abf98cc24"
     country = "AU"
     city = "Sydney"
     template = "{base}/{key}/conditions/q/{country}/{city}.json"
