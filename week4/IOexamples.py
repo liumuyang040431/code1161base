@@ -19,10 +19,10 @@ import json
 
 def be_cool(name):
     """Just print, not actually doing any IO."""
-    print(name + " is the god")
+    print(name + " is cool")
 
 
-be_cool("Levin")
+be_cool("OKAY")
 
 
 def be_cool_for_ever(name, file_path):
@@ -33,8 +33,9 @@ def be_cool_for_ever(name, file_path):
     history_book.close()
 
 
-be_cool_for_ever("Levin", "levin_is_cool.txt")
-be_cool_for_ever("Levin", "week1/Levin_is_cool.lol_UR_joking")
+be_cool_for_ever("Ben", "ben_is_cool.txt")
+be_cool_for_ever("Ben", "week4/ben_is_cool.lol_UR_joking")
+be_cool_for_ever("Ben", "../ben_is_cool.txt")
 
 
 def who_is_cool(file_path):
@@ -72,7 +73,7 @@ def bury_time_capsule(something_for_your_kids_to_find, file_path):
         return False
 
 
-message_for_capsule = {"name": "Levin",
+message_for_capsule = {"name": "Ben",
                        "Year": 2017,
                        "Location": "Sydney",
                        "Greeting": "Yo whatup now and give a brother room",
