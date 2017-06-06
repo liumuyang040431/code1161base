@@ -12,11 +12,11 @@ def loop_ranger(start, stop=None, step=1):
 
     Do this using any method apart from just using range()
     """
-    first_loop = []
-    while start < stop:
-        first_loop.append(start)
-        start += step
-    return first_loop
+    numList = []
+    for i in xrange(start, stop, step):
+        numList.append(i)
+    return numList
+    pass
 
 
 def lone_ranger(start, stop, step):
@@ -24,10 +24,13 @@ def lone_ranger(start, stop, step):
 
     Look up the docs for range() and wrap it in a 1:1 way
     """
-    second_loop = []
-    for i in range(start, stop, step):
-        second_loop.append(i)
-    return second_loop
+    loneRanger = []
+    index = start
+    while (index < stop):
+        loneRanger.append(index)
+        index = index + step
+    return loneRanger
+    pass
 
 
 def two_step_ranger(start, stop):
@@ -36,12 +39,11 @@ def two_step_ranger(start, stop):
     Sometimes you want to hide complexity.
     Make a range function that always has a step size of 2
     """
-    step = 2
-    third_loop = []
-    while start < stop:
-        third_loop.append(start)
-        start += step
-    return third_loop
+    twoStepRanger = []
+    for i in xrange(start, stop, 2):
+        twoStepRanger.append(i)
+    return twoStepRanger
+    pass
 
 
 def gene_krupa_range(start, stop, even_step, odd_step):
@@ -50,16 +52,18 @@ def gene_krupa_range(start, stop, even_step, odd_step):
     make a list that instead of having evenly spaced steps
     has odd steps be one size and even steps be another.
     """
-    fourth_loop = []
-    loop = 0
-    while start < stop:
-        fourth_loop.append(start)
-        if loop % 2 == 0:
-            start += even_step
+    index = start
+    evenOddRange = []
+    evenOdd = 0
+    while (index < stop):
+        evenOddRange.append(index)
+        if evenOdd % 2 == 1:
+            index = index + odd_step
         else:
-            start += odd_step
-        loop += 1
-    return fourth_loop
+            index = index + even_step
+        evenOdd = evenOdd + 1
+    return evenOddRange
+    pass
 
 
 def stubborn_asker(low, high):
@@ -68,15 +72,17 @@ def stubborn_asker(low, high):
     Ask for a number, and if the response is outside the bounds keep asking
     until you get a number that you think is OK
     """
-    message = "Give a number {low}, and {high}:".format(low=low, high=high)
+    message = "Enter a Numer between {low} and {high}: ".format(low=low,
+                                                                high=high)
+    number = int(raw_input(message))
     while True:
-        input_number = int(raw_input(message))
-        if low < input_number < high:
-            print ("good job! {}".format(input_number))
-            return input_number
+        if (low < number < high):
+            print("{} is fine.".format(number))
+            return number
         else:
-            print("{input} isn't between {low} and {high}".
-                  format(input=input_number, low=low, high=high))
+            number = int(raw_input("Please enter another number: "))
+    return number
+    pass
 
 
 def not_number_rejector(message):
@@ -86,14 +92,19 @@ def not_number_rejector(message):
     "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
-    passed = False
-    while passed is False:
-        passed = True
+    answered = False
+    while answered is False:
+        answered = True
+        inputVar = raw_input(message)
         try:
-            inputted = int(str(raw_input(message)))
-        except ValueError:
-            passed = False
-    return inputted
+            inputVar = int(inputVar)
+            break
+        except Exception:
+            try:
+                inputVar = float(inputVar)
+            except Exception:
+                answered = False
+    return inputVar
 
 
 def super_asker(low, high):
@@ -102,19 +113,23 @@ def super_asker(low, high):
     Combine stubborn_asker and not_number_rejector to make a function
     that does it all!
     """
-    passed = False
-    inputted = "placeholder"
-    while passed is False:
-        passed = True
+    message = "Enter a Numer between {low} and {high}: ".format(low=low,
+                                                                high=high)
+    tryAgain = True
+    while tryAgain is True:
+        tryAgain = False
         try:
-            inputted = int(str(raw_input()))
-        except ValueError:
-            passed = False
-        if low < inputted < high:
-            passed = True
-        else:
-            passed = False
-    return inputted
+            number = int(raw_input(message))
+            if (low < number < high):
+                print("{} is fine.".format(number))
+            else:
+                print("This number is not between " + str(low) + " and "
+                      + str(high))
+                tryAgain = True
+        except Exception:
+            print("You did not enter a number!")
+            tryAgain = True
+    return number
 
 
 if __name__ == "__main__":
